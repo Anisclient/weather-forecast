@@ -24,13 +24,13 @@ const Selectcity: React.FC<SelectProps> = ({ className }) => {
   const [value, setValue] = useState('')
   const [active, setActive] = useState(false)
 
-  function setNameToInput(name: string) {
+  function setCityNameToInput(name: string) {
     setValue(name)
     setActive(false)
     selectcityRef.current.focus()
   }
 
-  function setNameToInputWithKeyboard(e: React.KeyboardEvent, name: string) {
+  function setCityNameToInputWithKeyboard(e: React.KeyboardEvent, name: string) {
     const keyCode = e.key
 
     if (keyCode === 'Enter') {
@@ -40,9 +40,12 @@ const Selectcity: React.FC<SelectProps> = ({ className }) => {
     }
   }
 
-  function handleWithKeyboard(e: React.KeyboardEvent) {
+  function handleActive() {
+    setActive(!active)
+  }
+
+  function handleActiveWithKeyboard(e: React.KeyboardEvent) {
     const keyCode = e.key
-    console.log('keyCode-->', keyCode)
 
     if (keyCode === 'ArrowDown') {
       setActive(true)
@@ -53,8 +56,12 @@ const Selectcity: React.FC<SelectProps> = ({ className }) => {
     }
   }
 
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+  }
+
   return (
-    <form className={cn(className, 'selectcity')}>
+    <form className={cn(className, 'selectcity')} onSubmit={handleSubmit}>
       <input
         value={value}
         type="text"
@@ -62,8 +69,8 @@ const Selectcity: React.FC<SelectProps> = ({ className }) => {
         ref={selectcityRef}
         placeholder="Select city"
         className={cn('selectcity__input', `${active && 'active'}`)}
-        onClick={() => setActive(!active)}
-        onKeyDown={(e) => handleWithKeyboard(e)}
+        onClick={handleActive}
+        onKeyDown={handleActiveWithKeyboard}
       />
       {active && (
         <ul className="selectcity__items" tabIndex={0}>
@@ -72,8 +79,8 @@ const Selectcity: React.FC<SelectProps> = ({ className }) => {
               className="selectcity__item"
               key={city.id}
               tabIndex={0}
-              onClick={() => setNameToInput(city.name)}
-              onKeyDown={(e) => setNameToInputWithKeyboard(e, city.name)}>
+              onClick={() => setCityNameToInput(city.name)}
+              onKeyDown={(e) => setCityNameToInputWithKeyboard(e, city.name)}>
               {city.name}
             </li>
           ))}
