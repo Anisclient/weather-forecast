@@ -1,0 +1,25 @@
+@import '../../variables.scss';
+
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  &__img {
+    width: 160px;
+    height: 160px;
+  }
+
+  &__text {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: $secondary;
+    margin-top: 28px;
+  }
+}
