@@ -1,7 +1,7 @@
 import React from 'react'
-import './App.scss'
+import './app.scss'
 
-function App() {
+const App: React.FC = () => {
   return <span>V kazani skvoznyak ;)</span>
 }
 
