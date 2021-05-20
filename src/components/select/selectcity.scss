@@ -1,0 +1,98 @@
+@import '../../variables.scss';
+
+.selectcity {
+  &__input {
+    width: 252px;
+    padding: 12px 16px;
+    background-color: $secondary006;
+    border: 2px solid $secondary02;
+    border-radius: 8px;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: $base-strong;
+    background-image: url('../../assets/icons/16/chevron-bottom.png');
+    background-repeat: no-repeat;
+    background-position: 220px center;
+    background-size: initial;
+    outline: none;
+
+    &::placeholder {
+      font-family: Ubuntu;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 24px;
+      color: $secondary;
+    }
+
+    &:hover {
+      border: 2px solid $secondary;
+      cursor: pointer;
+    }
+
+    &:focus {
+      border: 2px solid $secondary;
+    }
+  }
+
+  &__input.active {
+    background-image: url('../../assets/icons/16/chevron-top.png');
+    background-repeat: no-repeat;
+    background-position: 220px center;
+    background-size: initial;
+    border: 2px solid $accent;
+
+    &:focus {
+      border: 2px solid $secondary;
+    }
+  }
+
+  &__items {
+    width: 252px;
+    height: 160px;
+    background-color: $base-weak;
+    border: 2px solid $secondary006;
+    box-shadow: 0px 2px 4px rgba(4, 5, 73, 0.16), 14px 14px 20px rgba(5, 6, 114, 0.08);
+    border-radius: 8px;
+    padding: 6px;
+    overflow-y: scroll;
+    margin-top: 12px;
+    outline: none;
+
+    &:focus {
+      border: 2px solid $secondary;
+    }
+
+    &::-webkit-scrollbar {
+      background-color: $base-weak;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      width: 4px;
+      height: 28px;
+      background-color: $secondary04;
+      border-radius: 38px;
+    }
+  }
+
+  &__item {
+    border-radius: 8px;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: $base-strong;
+    padding: 10px 6px;
+    cursor: pointer;
+    outline: none;
+
+    &:hover,
+    &:focus {
+      background-color: $secondary006;
+    }
+  }
+}
