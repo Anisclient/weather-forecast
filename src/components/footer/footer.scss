@@ -1,0 +1,18 @@
+@import '../../variables.scss';
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__text {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 14px;
+    line-height: 18px;
+    color: $base-weak;
+    opacity: 0.6;
+  }
+}
