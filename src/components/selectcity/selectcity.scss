@@ -1,9 +1,11 @@
 @import '../../variables.scss';
 
 .selectcity {
+  position: relative;
+
   &__input {
     width: 252px;
-    padding: 12px 16px;
+    padding: 10px 16px;
     background-color: $secondary006;
     border: 2px solid $secondary02;
     border-radius: 8px;
@@ -61,6 +63,7 @@
     overflow-y: scroll;
     margin-top: 12px;
     outline: none;
+    position: absolute;
 
     &:focus {
       border: 2px solid $secondary;
