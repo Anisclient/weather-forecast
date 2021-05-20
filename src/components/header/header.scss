@@ -1,0 +1,25 @@
+@import '../../variables.scss';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 775px;
+  max-height: 212px;
+  margin-bottom: 60px;
+  // todo
+
+  &__text {
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 102px;
+    line-height: 122px;
+    color: $base-weak;
+  }
+
+  &__text_right {
+    margin-left: auto;
+  }
+}
