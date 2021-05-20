@@ -1,5 +1,5 @@
 import React from 'react'
-import Selectcity from '../select'
+import Selectcity from '../selectcity'
 import './forecastcard.scss'
 
 const Forecastcard: React.FC = () => {
