@@ -2,9 +2,30 @@
 
 .selectcity {
   position: relative;
+  max-width: 252px;
+
+  &__span {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 16px;
+    background-image: url('../../assets/icons/16/chevron-bottom.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: initial;
+  }
+
+  &__span.active {
+    background-image: url('../../assets/icons/16/chevron-top.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: initial;
+  }
 
   &__input {
-    width: 252px;
+    width: 100%;
     padding: 10px 16px;
     background-color: $secondary006;
     border: 2px solid $secondary02;
@@ -15,10 +36,6 @@
     font-size: 16px;
     line-height: 24px;
     color: $base-strong;
-    background-image: url('../../assets/icons/16/chevron-bottom.png');
-    background-repeat: no-repeat;
-    background-position: 220px center;
-    background-size: initial;
     outline: none;
 
     &::placeholder {
@@ -41,10 +58,6 @@
   }
 
   &__input.active {
-    background-image: url('../../assets/icons/16/chevron-top.png');
-    background-repeat: no-repeat;
-    background-position: 220px center;
-    background-size: initial;
     border: 2px solid $accent;
 
     &:focus {
@@ -53,7 +66,8 @@
   }
 
   &__items {
-    width: 252px;
+    width: 100%;
+    max-width: 252px;
     height: 160px;
     background-color: $base-weak;
     border: 2px solid $secondary006;

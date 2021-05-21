@@ -62,6 +62,7 @@ const Selectcity: React.FC<SelectProps> = ({ className }) => {
 
   return (
     <form className={cn(className, 'selectcity')} onSubmit={handleSubmit}>
+      <span className={cn('selectcity__span', `${active && 'active'}`)}></span>
       <input
         value={value}
         type="text"
