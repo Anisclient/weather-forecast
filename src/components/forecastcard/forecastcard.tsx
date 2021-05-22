@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import Placeholder from '../placeholder'
-import Result7days from '../result7days'
+//todo
+// import Result7days from '../result7days'
+import Result7daysnew from '../result7daysnew'
 import Resultdateinthepast from '../resultdateinthepast'
 import Selectcity from '../selectcity'
 import Selectdate from '../selectdate'
@@ -30,7 +32,7 @@ const Forecastcard: React.FC<ForecastcardProps> = ({ type }) => {
       </div>
       {isResult ? (
         type === '7days' ? (
-          <Result7days className="forecastcard__result7days" />
+          <Result7daysnew className="forecastcard__result7daysnew" />
         ) : (
           <Resultdateinthepast className="forecastcard__resultdateinthepast" />
         )
