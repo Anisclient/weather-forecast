@@ -8,7 +8,16 @@
   max-width: 775px;
   max-height: 212px;
   margin-bottom: 60px;
-  // todo
+
+  @media screen and (max-width: 1439px) {
+    margin-bottom: 65px;
+  }
+
+  @media screen and (max-width: 1279px) {
+    max-width: 243px;
+    max-height: 64px;
+    margin-bottom: 24px;
+  }
 
   &__text {
     font-family: Ubuntu;
@@ -17,6 +26,11 @@
     font-size: 102px;
     line-height: 122px;
     color: $base-weak;
+
+    @media screen and (max-width: 1279px) {
+      font-size: 32px;
+      line-height: 32px;
+    }
   }
 
   &__text_right {
