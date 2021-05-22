@@ -34,6 +34,12 @@ button {
   padding: 0;
 }
 
+html,
+body,
+#root {
+  height: 100%;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -41,6 +47,7 @@ button {
   align-items: center;
   padding: 65px 45px 16px;
   width: 100%;
+  min-height: 100%;
   background-color: $accent;
   background-image: url('./assets/background/Academy-Weather\ forecast-Bg-buttom@2x.png'),
     url('./assets//background//Academy-Weather\ forecast-Bg-up-1.png');

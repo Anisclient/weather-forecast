@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   width: 100%;
+  flex: 0 0 auto;
 
   &__forecastcard {
     flex: 1 1 50%;
