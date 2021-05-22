@@ -13,7 +13,7 @@
   &__title {
     font-family: Ubuntu;
     font-style: normal;
-    font-weight: normal;
+    font-weight: bold;
     font-size: 32px;
     line-height: 32px;
     color: $base-strong;
@@ -37,5 +37,9 @@
 
   &__selectdate {
     flex: 1 1 50%;
+  }
+
+  &__result7days {
+    margin-top: 54px;
   }
 }
