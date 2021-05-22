@@ -1,0 +1,64 @@
+@import '../../variables.scss';
+
+.result7daysnew {
+  width: 100%;
+  height: 238px;
+  border-radius: 8px;
+  position: relative;
+
+  &__line {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
+
+    @media screen and (max-width: 1279px) {
+      width: 200%;
+    }
+  }
+
+  &__btns {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 112.5%;
+    left: -34px;
+    bottom: 50%;
+    transform: translate(0, 50%);
+
+    @media screen and (max-width: 1279px) {
+      display: none;
+    }
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: $secondary06;
+
+      &:hover {
+        color: $secondary;
+      }
+
+      &:active {
+        color: $secondary;
+      }
+    }
+  }
+
+  &__forecast {
+    margin: 0 5px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    @media screen and (max-width: 1279px) {
+      margin: 0 8px;
+    }
+  }
+}
