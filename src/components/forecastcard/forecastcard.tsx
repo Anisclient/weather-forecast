@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Placeholder from '../placeholder'
+import Result7days from '../result7days'
 import Selectcity from '../selectcity'
 import Selectdate from '../selectdate'
 import './forecastcard.scss'
@@ -9,6 +10,8 @@ interface ForecastcardProps {
 }
 
 const Forecastcard: React.FC<ForecastcardProps> = ({ type }) => {
+  const [isResult, setIsResult] = useState(true)
+
   return (
     <section className="main__forecastcard forecastcard">
       <h3 className="forecastcard__title">
@@ -24,7 +27,11 @@ const Forecastcard: React.FC<ForecastcardProps> = ({ type }) => {
           </>
         )}
       </div>
-      <Placeholder className="forecastcard__placeholder" />
+      {isResult ? (
+        <Result7days className="forecastcard__result7days" />
+      ) : (
+        <Placeholder className="forecastcard__placeholder" />
+      )}
     </section>
   )
 }
