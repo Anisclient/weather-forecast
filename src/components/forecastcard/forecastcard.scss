@@ -5,10 +5,16 @@
   padding: 50px 58px 70px;
   box-shadow: 0px 4px 4px rgba(4, 5, 73, 0.25), 14px 14px 20px rgba(5, 6, 114, 0.2);
   border-radius: 8px;
+  width: 100%;
   max-width: 660px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media screen and (max-width: 1279px) {
+    padding: 32px 24px 60px;
+    overflow-x: hidden;
+  }
 
   &__title {
     font-family: Ubuntu;
@@ -25,6 +31,10 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 32px;
+
+    @media screen and (max-width: 1279px) {
+      flex-direction: column;
+    }
   }
 
   &__placeholder {
@@ -33,18 +43,35 @@
 
   &__selectcity {
     flex: 1 1 50%;
+
+    @media screen and (max-width: 1279px) {
+      margin-top: 24px;
+    }
   }
 
   &__selectdate {
     flex: 1 1 50%;
   }
 
-  &__result7days {
+  // todo
+  // &__result7days {
+  //   margin-top: 54px;
+  //   margin-bottom: -25px;
+  // }
+
+  &__result7daysnew {
     margin-top: 54px;
-    margin-bottom: -25px;
+
+    @media screen and (max-width: 1439px) {
+      margin-top: 30px;
+    }
   }
 
   &__resultdateinthepast {
     margin-top: 54px;
+
+    @media screen and (max-width: 1439px) {
+      margin-top: 30px;
+    }
   }
 }
