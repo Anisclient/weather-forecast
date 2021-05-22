@@ -23,13 +23,19 @@
   &__selectgroup {
     display: flex;
     justify-content: space-between;
-  }
-
-  &__selectcity {
+    align-items: center;
     margin-top: 32px;
   }
 
   &__placeholder {
     margin-top: 60px;
+  }
+
+  &__selectcity {
+    flex: 1 1 50%;
+  }
+
+  &__selectdate {
+    flex: 1 1 50%;
   }
 }
