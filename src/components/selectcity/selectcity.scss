@@ -84,6 +84,7 @@
     margin-top: 12px;
     outline: none;
     position: absolute;
+    z-index: 1;
 
     &:focus {
       border: 2px solid $secondary;
