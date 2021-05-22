@@ -12,12 +12,18 @@
   justify-content: space-between;
 
   &__date {
-    font-family: Ubuntu;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 24px;
-    color: $base-weak;
+    position: relative;
+
+    p {
+      position: absolute;
+      font-family: Ubuntu;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 24px;
+      color: $base-weak;
+      white-space: nowrap;
+    }
   }
 
   &__img {
