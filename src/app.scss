@@ -51,7 +51,18 @@ body,
   background-color: $accent;
   background-image: url('./assets/background/Academy-Weather\ forecast-Bg-buttom@2x.png'),
     url('./assets//background//Academy-Weather\ forecast-Bg-up-1.png');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
+  background-repeat: no-repeat no-repeat;
+  background-position: left 0px bottom 0px, right 0px top 0px;
+  background-size: 1612px 1203px, 1625px 1206px;
+
+  @media screen and (max-width: 1439px) {
+    background-position: left -50px bottom 0px, right -200px top -20px;
+    background-size: 1612px 1203px, 1625px 1236px;
+  }
+
+  @media screen and (max-width: 1279px) {
+    padding: 32px 10px 16px;
+    background-position: left -30px bottom -30px, right 0px top 0px;
+    background-size: 900px 800px, 445px 415px;
+  }
 }
