@@ -7,7 +7,7 @@ interface City {
   name: string
 }
 
-interface SelectProps {
+interface SelectCityProps {
   className?: string
 }
 
@@ -18,7 +18,7 @@ const cities: City[] = [
   { id: 4, name: 'Saransk' },
 ]
 
-const Selectcity: React.FC<SelectProps> = ({ className }) => {
+const Selectcity: React.FC<SelectCityProps> = ({ className }) => {
   const selectcityRef = useRef() as React.MutableRefObject<HTMLInputElement>
 
   const [value, setValue] = useState('')
@@ -62,8 +62,11 @@ const Selectcity: React.FC<SelectProps> = ({ className }) => {
 
   return (
     <form className={cn(className, 'selectcity')} onSubmit={handleSubmit}>
-      <span className={cn('selectcity__span', `${active && 'active'}`)}></span>
+      <label
+        htmlFor="selectcity"
+        className={cn('selectcity__label', `${active && 'active'}`)}></label>
       <input
+        id="selectcity"
         value={value}
         type="text"
         readOnly

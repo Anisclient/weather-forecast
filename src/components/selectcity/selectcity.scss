@@ -3,8 +3,10 @@
 .selectcity {
   position: relative;
   max-width: 252px;
+  height: 48px;
+  width: 100%;
 
-  &__span {
+  &__label {
     position: absolute;
     width: 16px;
     height: 16px;
@@ -15,9 +17,13 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: initial;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
-  &__span.active {
+  &__label.active {
     background-image: url('../../assets/icons/16/chevron-top.png');
     background-repeat: no-repeat;
     background-position: center center;
