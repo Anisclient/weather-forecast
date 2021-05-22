@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Placeholder from '../placeholder'
 import Result7days from '../result7days'
+import Resultdateinthepast from '../resultdateinthepast'
 import Selectcity from '../selectcity'
 import Selectdate from '../selectdate'
 import './forecastcard.scss'
@@ -28,7 +29,11 @@ const Forecastcard: React.FC<ForecastcardProps> = ({ type }) => {
         )}
       </div>
       {isResult ? (
-        <Result7days className="forecastcard__result7days" />
+        type === '7days' ? (
+          <Result7days className="forecastcard__result7days" />
+        ) : (
+          <Resultdateinthepast className="forecastcard__resultdateinthepast" />
+        )
       ) : (
         <Placeholder className="forecastcard__placeholder" />
       )}
