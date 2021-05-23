@@ -9,13 +9,13 @@ export interface City {
 
 export interface Weather7daysState {
   data7days: unknown
-  currentCity: string
+  currentCity7days: string
   cities: City[]
 }
 
 const initialState: Weather7daysState = {
   data7days: '',
-  currentCity: '',
+  currentCity7days: '',
   cities: [
     { id: 1, name: 'Самара', lat: 53.195873, lon: 50.100193 },
     { id: 2, name: 'Тольятти', lat: 53.507836, lon: 49.420393 },
@@ -33,7 +33,7 @@ const slice = createSlice({
       state.data7days = action.payload
     },
     setCurrentCity(state, action) {
-      state.currentCity = action.payload
+      state.currentCity7days = action.payload
     },
   },
 })

@@ -1,12 +1,13 @@
 import React from 'react'
 import './formforpast.scss'
 import cn from 'classnames'
-import { submit7days } from '../../store/actions/weather7days'
+import { submitForPast } from '../../store/actions/weatherforpast'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppStore } from '../../store/reducers'
 import Selectcity from '../selectcity'
 import { City } from '../../store/slices/weather7days'
 import Selectdate from '../selectdate'
+import { setCurrentCityForPast } from '../../store/slices/weatherforpast'
 
 interface FormforpastProps {
   className?: string
@@ -16,7 +17,11 @@ interface FormforpastProps {
 const Formforpast: React.FC<FormforpastProps> = ({ className, isResult }) => {
   const dispatch = useDispatch()
 
-  const currentCity = useSelector<AppStore, string>((store) => store.weather7days.currentCity)
+  const currentCity = useSelector<AppStore, string>(
+    (store) => store.weatherPorPast.currentCityForPast,
+  )
+
+  const time = useSelector<AppStore, number>((store) => store.weatherPorPast.time)
 
   const cities = useSelector<AppStore, City[]>((store) => store.weather7days.cities)
 
@@ -30,11 +35,11 @@ const Formforpast: React.FC<FormforpastProps> = ({ className, isResult }) => {
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
-    //   dispatch(submitLoginFormActionCreator(city))
+    city && time && dispatch(submitForPast(city, time))
   }
 
   function fetch() {
-    dispatch(submit7days(city))
+    city && time && dispatch(submitForPast(city, time))
   }
 
   return (
@@ -44,6 +49,7 @@ const Formforpast: React.FC<FormforpastProps> = ({ className, isResult }) => {
         currentCity={currentCity}
         fetch={fetch}
         cities={cities}
+        setCurrentCity={setCurrentCityForPast}
       />
       <Selectdate className={cn('formforpast__selectdate', isResult && 'result')} />
     </form>

@@ -2,16 +2,23 @@ import React, { useRef, useState } from 'react'
 import './selectcity.scss'
 import cn from 'classnames'
 import { useDispatch } from 'react-redux'
-import { City, setCurrentCity } from '../../store/slices/weather7days'
+import { City } from '../../store/slices/weather7days'
 
 interface SelectCityProps {
   className?: string
   currentCity: string
   fetch: () => void
   cities: City[]
+  setCurrentCity: (name: string) => void
 }
 
-const Selectcity: React.FC<SelectCityProps> = ({ className, currentCity, fetch, cities }) => {
+const Selectcity: React.FC<SelectCityProps> = ({
+  className,
+  currentCity,
+  fetch,
+  cities,
+  setCurrentCity,
+}) => {
   const [active, setActive] = useState(false)
 
   const selectcityRef = useRef() as React.MutableRefObject<HTMLInputElement>
