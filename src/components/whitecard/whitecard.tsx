@@ -2,11 +2,9 @@ import React, { useState } from 'react'
 import Placeholder from '../placeholder'
 import Result7days from '../result7days'
 import Resultdateinthepast from '../resultdateinthepast'
-import Selectcity from '../selectcity'
-import Selectdate from '../selectdate'
 import './whitecard.scss'
-import cn from 'classnames'
 import Form7days from '../form7days'
+import Formforpast from '../formforpast'
 
 interface WhitecardProps {
   type: '7days' | 'dateInThePast'
@@ -20,18 +18,11 @@ const Whitecard: React.FC<WhitecardProps> = ({ type }) => {
       <h3 className="whitecard__title">
         {type === '7days' ? '7 Days Forecast' : 'Forecast for a Date in the Past'}
       </h3>
-      <div className="whitecard__selectgroup">
-        {type === '7days' ? (
-          // <Selectcity />
-          <Form7days />
-        ) : (
-          <>
-            {/* <Formforpast /> */}
-            {/* <Selectcity className="whitecard__selectcity" /> */}
-            {/* <Selectdate className={cn('whitecard__selectdate', isResult && 'result')} /> */}
-          </>
-        )}
-      </div>
+      {type === '7days' ? (
+        <Form7days className="whitecard__form" />
+      ) : (
+        <Formforpast className="whitecard__form" isResult={isResult} />
+      )}
       {isResult ? (
         type === '7days' ? (
           <Result7days className="whitecard__result7days" />

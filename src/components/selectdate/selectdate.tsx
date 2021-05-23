@@ -19,12 +19,8 @@ const Selectdate: React.FC<SelectdateProps> = ({ className }) => {
     setIsTypeText(false)
   }
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-  }
-
   return (
-    <form className={cn(className, 'selectdate')} onSubmit={handleSubmit}>
+    <div className={cn(className, 'selectdate')}>
       <label htmlFor="selectdate" className={cn('selectdate__label', `${!isTypeText && 'active'}`)}>
         <svg
           width="16"
@@ -51,7 +47,7 @@ const Selectdate: React.FC<SelectdateProps> = ({ className }) => {
         placeholder="Select date"
         className="selectdate__input"
       />
-    </form>
+    </div>
   )
 }
 
