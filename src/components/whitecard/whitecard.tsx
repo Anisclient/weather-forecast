@@ -6,6 +6,7 @@ import Selectcity from '../selectcity'
 import Selectdate from '../selectdate'
 import './whitecard.scss'
 import cn from 'classnames'
+import Form7days from '../form7days'
 
 interface WhitecardProps {
   type: '7days' | 'dateInThePast'
@@ -21,11 +22,13 @@ const Whitecard: React.FC<WhitecardProps> = ({ type }) => {
       </h3>
       <div className="whitecard__selectgroup">
         {type === '7days' ? (
-          <Selectcity />
+          // <Selectcity />
+          <Form7days />
         ) : (
           <>
-            <Selectcity className="whitecard__selectcity" />
-            <Selectdate className={cn('whitecard__selectdate', isResult && 'result')} />
+            {/* <Formforpast /> */}
+            {/* <Selectcity className="whitecard__selectcity" /> */}
+            {/* <Selectdate className={cn('whitecard__selectdate', isResult && 'result')} /> */}
           </>
         )}
       </div>
