@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Placeholder from '../placeholder'
 import Result7days from '../result7days'
-import Resultdateinthepast from '../resultdateinthepast'
+import Resultforpast from '../resultforpast'
 import './whitecard.scss'
 import Form7days from '../form7days'
 import Formforpast from '../formforpast'
@@ -27,7 +27,7 @@ const Whitecard: React.FC<WhitecardProps> = ({ type }) => {
         type === '7days' ? (
           <Result7days className="whitecard__result7days" />
         ) : (
-          <Resultdateinthepast className="whitecard__resultdateinthepast" />
+          <Resultforpast className="whitecard__resultforpast" />
         )
       ) : (
         <Placeholder className="whitecard__placeholder" />
