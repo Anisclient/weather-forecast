@@ -1,19 +1,18 @@
 import React, { useState } from 'react'
 import Placeholder from '../placeholder'
-//todo
-// import Result7days from '../result7days'
 import Result7daysnew from '../result7daysnew'
 import Resultdateinthepast from '../resultdateinthepast'
 import Selectcity from '../selectcity'
 import Selectdate from '../selectdate'
 import './whitecard.scss'
+import cn from 'classnames'
 
 interface WhitecardProps {
   type: '7days' | 'dateInThePast'
 }
 
 const Whitecard: React.FC<WhitecardProps> = ({ type }) => {
-  const [isResult, setIsResult] = useState(true)
+  const [isResult] = useState(true)
 
   return (
     <section className="main__whitecard whitecard">
@@ -26,7 +25,7 @@ const Whitecard: React.FC<WhitecardProps> = ({ type }) => {
         ) : (
           <>
             <Selectcity className="whitecard__selectcity" />
-            <Selectdate className="whitecard__selectcity" />
+            <Selectdate className={cn('whitecard__selectdate', isResult && 'result')} />
           </>
         )}
       </div>

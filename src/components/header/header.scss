@@ -1,13 +1,10 @@
 @import '../../variables.scss';
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  max-width: 775px;
-  max-height: 212px;
+  width: 775px;
+  height: 212px;
   margin-bottom: 60px;
+  position: relative;
 
   @media screen and (max-width: 1439px) {
     margin-bottom: 65px;
@@ -35,5 +32,8 @@
 
   &__text_right {
     margin-left: auto;
+    position: absolute;
+    right: 0;
+    bottom: 0;
   }
 }

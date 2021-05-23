@@ -39,25 +39,30 @@
 
   &__placeholder {
     margin-top: 60px;
+
+    @media screen and (max-width: 1279px) {
+      margin-top: 25px;
+    }
   }
 
   &__selectcity {
     flex: 1 1 50%;
-
-    @media screen and (max-width: 1279px) {
-      margin-top: 24px;
-    }
   }
 
   &__selectdate {
     flex: 1 1 50%;
+
+    @media screen and (max-width: 1279px) {
+      margin-top: 24px;
+      margin-bottom: 8px;
+    }
   }
 
-  // todo
-  // &__result7days {
-  //   margin-top: 54px;
-  //   margin-bottom: -25px;
-  // }
+  &__selectdate.result {
+    @media screen and (max-width: 1279px) {
+      margin-bottom: 0px;
+    }
+  }
 
   &__result7daysnew {
     margin-top: 54px;
