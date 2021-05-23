@@ -6,41 +6,41 @@ import Result7daysnew from '../result7daysnew'
 import Resultdateinthepast from '../resultdateinthepast'
 import Selectcity from '../selectcity'
 import Selectdate from '../selectdate'
-import './forecastcard.scss'
+import './whitecard.scss'
 
-interface ForecastcardProps {
+interface WhitecardProps {
   type: '7days' | 'dateInThePast'
 }
 
-const Forecastcard: React.FC<ForecastcardProps> = ({ type }) => {
+const Whitecard: React.FC<WhitecardProps> = ({ type }) => {
   const [isResult, setIsResult] = useState(true)
 
   return (
-    <section className="main__forecastcard forecastcard">
-      <h3 className="forecastcard__title">
+    <section className="main__whitecard whitecard">
+      <h3 className="whitecard__title">
         {type === '7days' ? '7 Days Forecast' : 'Forecast for a Date in the Past'}
       </h3>
-      <div className="forecastcard__selectgroup">
+      <div className="whitecard__selectgroup">
         {type === '7days' ? (
           <Selectcity />
         ) : (
           <>
-            <Selectcity className="forecastcard__selectcity" />
-            <Selectdate className="forecastcard__selectcity" />
+            <Selectcity className="whitecard__selectcity" />
+            <Selectdate className="whitecard__selectcity" />
           </>
         )}
       </div>
       {isResult ? (
         type === '7days' ? (
-          <Result7daysnew className="forecastcard__result7daysnew" />
+          <Result7daysnew className="whitecard__result7daysnew" />
         ) : (
-          <Resultdateinthepast className="forecastcard__resultdateinthepast" />
+          <Resultdateinthepast className="whitecard__resultdateinthepast" />
         )
       ) : (
-        <Placeholder className="forecastcard__placeholder" />
+        <Placeholder className="whitecard__placeholder" />
       )}
     </section>
   )
 }
 
-export default Forecastcard
+export default Whitecard

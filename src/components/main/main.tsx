@@ -1,12 +1,12 @@
 import React from 'react'
-import Forecastcard from '../forecastcard'
+import Whitecard from '../whitecard'
 import './main.scss'
 
 const Main: React.FC = () => {
   return (
     <main className="main">
-      <Forecastcard type="7days" />
-      <Forecastcard type="dateInThePast" />
+      <Whitecard type="7days" />
+      <Whitecard type="dateInThePast" />
     </main>
   )
 }
