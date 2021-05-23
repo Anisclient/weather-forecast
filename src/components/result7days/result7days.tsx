@@ -1,22 +1,22 @@
 import React from 'react'
 import Forecast from '../forecast'
-import './result7daysnew.scss'
+import './result7days.scss'
 import cn from 'classnames'
 
-interface Result7daysnewProps {
+interface Result7daysProps {
   className?: string
 }
 
-const Result7daysnew: React.FC<Result7daysnewProps> = ({ className }) => {
+const Result7days: React.FC<Result7daysProps> = ({ className }) => {
   const week = [1, 2, 3]
   return (
-    <div className={cn(className, 'result7daysnew')}>
-      <div className="result7daysnew__line">
+    <div className={cn(className, 'result7days')}>
+      <div className="result7days__line">
         {week.map((day) => (
-          <Forecast key={day} className="result7daysnew__forecast" />
+          <Forecast key={day} className="result7days__forecast" />
         ))}
       </div>
-      <div className="result7daysnew__btns">
+      <div className="result7days__btns">
         <button>
           <svg
             width="24"
@@ -52,4 +52,4 @@ const Result7daysnew: React.FC<Result7daysnewProps> = ({ className }) => {
   )
 }
 
-export default Result7daysnew
+export default Result7days
