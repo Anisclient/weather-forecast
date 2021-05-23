@@ -7,14 +7,14 @@ export interface City {
   lon: number
 }
 
-export interface WeatherforaweekState {
-  weatherforaweek: unknown
+export interface Weather7daysState {
+  data7days: unknown
   currentCity: string
   cities: City[]
 }
 
-const initialState: WeatherforaweekState = {
-  weatherforaweek: '',
+const initialState: Weather7daysState = {
+  data7days: '',
   currentCity: '',
   cities: [
     { id: 1, name: 'Самара', lat: 53.195873, lon: 50.100193 },
@@ -26,11 +26,11 @@ const initialState: WeatherforaweekState = {
 }
 
 const slice = createSlice({
-  name: 'weather-for-a-week',
+  name: 'weather-7-days',
   initialState,
   reducers: {
-    fetchForecastForAWeek(state, action) {
-      state.weatherforaweek = action.payload
+    fetchDataFor7days(state, action) {
+      state.data7days = action.payload
     },
     setCurrentCity(state, action) {
       state.currentCity = action.payload
@@ -38,5 +38,5 @@ const slice = createSlice({
   },
 })
 
-export const { fetchForecastForAWeek, setCurrentCity } = slice.actions
+export const { fetchDataFor7days, setCurrentCity } = slice.actions
 export const reducer = slice.reducer

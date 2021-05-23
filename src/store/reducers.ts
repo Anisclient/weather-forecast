@@ -1,13 +1,10 @@
 import { combineReducers } from '@reduxjs/toolkit'
-import {
-  reducer as fetchForecastForWeekReducer,
-  WeatherforaweekState,
-} from './slices/weatherforaweek'
+import { reducer as reducer7days, Weather7daysState } from './slices/weather7days'
 
 export type AppStore = {
-  weatherforaweek: WeatherforaweekState
+  weather7days: Weather7daysState
 }
 
 export default combineReducers<AppStore>({
-  weatherforaweek: fetchForecastForWeekReducer,
+  weather7days: reducer7days,
 })

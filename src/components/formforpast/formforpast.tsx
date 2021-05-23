@@ -1,11 +1,11 @@
 import React from 'react'
 import './formforpast.scss'
 import cn from 'classnames'
-import { submitLoginFormActionCreator } from '../../store/actions/weatherforaweek'
+import { submit7days } from '../../store/actions/weather7days'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppStore } from '../../store/reducers'
 import Selectcity from '../selectcity'
-import { City } from '../../store/slices/weatherforaweek'
+import { City } from '../../store/slices/weather7days'
 import Selectdate from '../selectdate'
 
 interface FormforpastProps {
@@ -16,13 +16,9 @@ interface FormforpastProps {
 const Formforpast: React.FC<FormforpastProps> = ({ className, isResult }) => {
   const dispatch = useDispatch()
 
-  const currentCity = useSelector<AppStore, string>(
-    (rootSelector) => rootSelector.weatherforaweek.currentCity,
-  )
+  const currentCity = useSelector<AppStore, string>((store) => store.weather7days.currentCity)
 
-  const cities = useSelector<AppStore, City[]>(
-    (rootSelector) => rootSelector.weatherforaweek.cities,
-  )
+  const cities = useSelector<AppStore, City[]>((store) => store.weather7days.cities)
 
   const city: City = cities.find((city) => city.name === currentCity) || {
     id: 0,
@@ -38,7 +34,7 @@ const Formforpast: React.FC<FormforpastProps> = ({ className, isResult }) => {
   }
 
   function fetch() {
-    dispatch(submitLoginFormActionCreator(city))
+    dispatch(submit7days(city))
   }
 
   return (

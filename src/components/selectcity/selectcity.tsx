@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import './selectcity.scss'
 import cn from 'classnames'
 import { useDispatch } from 'react-redux'
-import { City, setCurrentCity } from '../../store/slices/weatherforaweek'
+import { City, setCurrentCity } from '../../store/slices/weather7days'
 
 interface SelectCityProps {
   className?: string
