@@ -2,8 +2,7 @@ import React, { useRef, useState } from 'react'
 import './selectcity.scss'
 import cn from 'classnames'
 import { useDispatch } from 'react-redux'
-import { setCity } from '../../store/slices/weatherforaweek'
-import { City } from '../form7days/form7days'
+import { City, setCurrentCity } from '../../store/slices/weatherforaweek'
 
 interface SelectCityProps {
   className?: string
@@ -20,7 +19,7 @@ const Selectcity: React.FC<SelectCityProps> = ({ className, currentCity, fetch, 
   const dispatch = useDispatch()
 
   function setCityNameToInput(name: string) {
-    dispatch(setCity(name))
+    dispatch(setCurrentCity(name))
     setActive(false)
     selectcityRef.current.focus()
     fetch()
@@ -30,7 +29,7 @@ const Selectcity: React.FC<SelectCityProps> = ({ className, currentCity, fetch, 
     const keyCode = e.key
 
     if (keyCode === 'Enter') {
-      dispatch(setCity(name))
+      dispatch(setCurrentCity(name))
       setActive(false)
       selectcityRef.current.focus()
     }

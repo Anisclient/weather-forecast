@@ -1,5 +1,4 @@
-import { City } from '../../components/form7days/form7days'
-import { fetchForecastForAWeek } from '../slices/weatherforaweek'
+import { City, fetchForecastForAWeek } from '../slices/weatherforaweek'
 
 export const submitLoginFormActionCreator = (city: City) => async (dispatch: any) => {
   fetch(
