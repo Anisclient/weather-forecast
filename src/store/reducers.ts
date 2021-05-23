@@ -4,7 +4,7 @@ import {
   WeatherforaweekState,
 } from './slices/weatherforaweek'
 
-type AppStore = {
+export type AppStore = {
   weatherforaweek: WeatherforaweekState
 }
 

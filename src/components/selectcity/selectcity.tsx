@@ -1,8 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import './selectcity.scss'
 import cn from 'classnames'
+import { submitLoginFormActionCreator } from '../../store/actions/weatherforaweek'
+import { useDispatch, useSelector } from 'react-redux'
+import { setCity } from '../../store/slices/weatherforaweek'
+import { AppStore } from '../../store/reducers'
 
-interface City {
+export interface City {
   id: number
   name: string
   lat: number
@@ -22,34 +26,35 @@ const cities: City[] = [
 ]
 
 const Selectcity: React.FC<SelectCityProps> = ({ className }) => {
-  const selectcityRef = useRef() as React.MutableRefObject<HTMLInputElement>
-
-  const [value, setValue] = useState('')
   const [active, setActive] = useState(false)
 
-  function fetchForecast(city: City) {
-    fetch(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=${city.lat}&lon=${city.lon}&units=metric&lang=ru&exclude=current,minutely,hourly&appid=a8bda3d6c35729ebd9a60a4aedcb4178`,
-    )
-      .then((data) => data.json())
-      .then((res) => console.log('res', res))
+  const selectcityRef = useRef() as React.MutableRefObject<HTMLInputElement>
+
+  const dispatch = useDispatch()
+
+  const currentCity = useSelector<AppStore, string>(
+    (rootSelector) => rootSelector.weatherforaweek.city,
+  )
+
+  const city: City = cities.find((city) => city.name === currentCity) || {
+    id: 0,
+    name: '',
+    lat: 0,
+    lon: 0,
   }
 
-  useEffect(() => {
-    fetchForecast(cities[3])
-  }, [])
-
   function setCityNameToInput(name: string) {
-    setValue(name)
+    dispatch(setCity(name))
     setActive(false)
     selectcityRef.current.focus()
+    fetch()
   }
 
   function setCityNameToInputWithKeyboard(e: React.KeyboardEvent, name: string) {
     const keyCode = e.key
 
     if (keyCode === 'Enter') {
-      setValue(name)
+      dispatch(setCity(name))
       setActive(false)
       selectcityRef.current.focus()
     }
@@ -73,6 +78,12 @@ const Selectcity: React.FC<SelectCityProps> = ({ className }) => {
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
+
+    dispatch(submitLoginFormActionCreator(city))
+  }
+
+  function fetch() {
+    dispatch(submitLoginFormActionCreator(city))
   }
 
   return (
@@ -82,7 +93,7 @@ const Selectcity: React.FC<SelectCityProps> = ({ className }) => {
         className={cn('selectcity__label', `${active && 'active'}`)}></label>
       <input
         id="selectcity"
-        value={value}
+        value={currentCity}
         type="text"
         readOnly
         ref={selectcityRef}
