@@ -11,7 +11,11 @@ const Placeholder: React.FC<PlaceholderProps> = ({ className }) => {
   return (
     <div className={cn(`${className}`, 'placeholder')}>
       <img className="placeholder__img" src={placeholder} alt="cloud placeholder image" />
-      <p className="placeholder__text">Fill in all the fields and the weather will be displayed</p>
+      <div className="placeholder__textwrapper">
+        <p className="placeholder__text">
+          Fill in all the fields and the weather will be displayed
+        </p>
+      </div>
     </div>
   )
 }
