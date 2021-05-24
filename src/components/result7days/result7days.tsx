@@ -2,18 +2,23 @@ import React from 'react'
 import Forecast from '../forecast'
 import './result7days.scss'
 import cn from 'classnames'
+import { AppStore } from '../../store/reducers'
+import { useSelector } from 'react-redux'
 
 interface Result7daysProps {
   className?: string
 }
 
 const Result7days: React.FC<Result7daysProps> = ({ className }) => {
-  const week = [1, 2, 3]
+  const data7days = useSelector<AppStore, any>((store) => store.weather7days.data7days)
+
+  const data3days = data7days.daily.slice(1, 4)
+
   return (
     <div className={cn(className, 'result7days')}>
       <div className="result7days__line">
-        {week.map((day) => (
-          <Forecast key={day} className="result7days__forecast" />
+        {data3days.map((day: any, index: number) => (
+          <Forecast key={index} day={day} className="result7days__forecast" />
         ))}
       </div>
       <div className="result7days__btns">

@@ -11,6 +11,7 @@ export interface Weather7daysState {
   data7days: unknown
   currentCity7days: string
   cities: City[]
+  isResult: boolean
 }
 
 const initialState: Weather7daysState = {
@@ -23,6 +24,7 @@ const initialState: Weather7daysState = {
     { id: 4, name: 'Казань', lat: 55.796127, lon: 49.106405 },
     { id: 5, name: 'Краснодар', lat: 45.03547, lon: 38.975313 },
   ],
+  isResult: false,
 }
 
 const slice = createSlice({
@@ -31,6 +33,7 @@ const slice = createSlice({
   reducers: {
     fetchDataFor7days(state, action) {
       state.data7days = action.payload
+      state.isResult = true
     },
     setCurrentCity(state, action) {
       state.currentCity7days = action.payload

@@ -1,17 +1,19 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Placeholder from '../placeholder'
 import Result7days from '../result7days'
 import Resultforpast from '../resultforpast'
 import './whitecard.scss'
 import Form7days from '../form7days'
 import Formforpast from '../formforpast'
+import { AppStore } from '../../store/reducers'
+import { useSelector } from 'react-redux'
 
 interface WhitecardProps {
   type: '7days' | 'dateInThePast'
 }
 
 const Whitecard: React.FC<WhitecardProps> = ({ type }) => {
-  const [isResult] = useState(true)
+  const isResult = useSelector<AppStore, boolean>((store) => store.weather7days.isResult)
 
   return (
     <section className="main__whitecard whitecard">

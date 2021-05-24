@@ -20,11 +20,7 @@ const Formforpast: React.FC<FormforpastProps> = ({ className, isResult }) => {
   const currentCity = useSelector<AppStore, string>(
     (store) => store.weatherPorPast.currentCityForPast,
   )
-
-  const time = useSelector<AppStore, number>((store) => store.weatherPorPast.time)
-
   const cities = useSelector<AppStore, City[]>((store) => store.weather7days.cities)
-
   const city: City = cities.find((city) => city.name === currentCity) || {
     id: 0,
     name: '',
@@ -32,14 +28,25 @@ const Formforpast: React.FC<FormforpastProps> = ({ className, isResult }) => {
     lon: 0,
   }
 
+  const time = useSelector<AppStore, string>((store) => store.weatherPorPast.time)
+  function getUnixTime(time: string) {
+    const date = time.split('-')
+    return (
+      new Date(parseInt(date[0], 10), parseInt(date[1], 10) - 1, parseInt(date[2]), 10).getTime() /
+      1000
+    )
+  }
+
+  const unixTime = getUnixTime(time)
+
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
-    city && time && dispatch(submitForPast(city, time))
+    city && time && dispatch(submitForPast(city, unixTime))
   }
 
   function fetch() {
-    city && time && dispatch(submitForPast(city, time))
+    city && time && dispatch(submitForPast(city, unixTime))
   }
 
   return (

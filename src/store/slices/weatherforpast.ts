@@ -3,13 +3,13 @@ import { createSlice } from '@reduxjs/toolkit'
 export interface WeatherForPastState {
   dataForPast: unknown
   currentCityForPast: string
-  time: number
+  time: string
 }
 
 const initialState: WeatherForPastState = {
   dataForPast: '',
   currentCityForPast: '',
-  time: 1621717718,
+  time: '',
 }
 
 const slice = createSlice({

@@ -1,15 +1,20 @@
 import React, { useState } from 'react'
 import './selectdate.scss'
 import cn from 'classnames'
+import { useDispatch, useSelector } from 'react-redux'
+import { setTimeForPast } from '../../store/slices/weatherforpast'
+import { AppStore } from '../../store/reducers'
 
 interface SelectdateProps {
   className?: string
 }
 
 const Selectdate: React.FC<SelectdateProps> = ({ className }) => {
-  // const selectdateRef = useRef() as React.MutableRefObject<HTMLInputElement>
-
   const [isTypeText, setIsTypeText] = useState(true)
+
+  const time = useSelector<AppStore, string>((store) => store.weatherPorPast.time)
+
+  const dispatch = useDispatch()
 
   function setIsTypeTextTrue() {
     setIsTypeText(true)
@@ -17,6 +22,10 @@ const Selectdate: React.FC<SelectdateProps> = ({ className }) => {
 
   function setIsTypeTextFalse() {
     setIsTypeText(false)
+  }
+
+  function setTime(time: string) {
+    dispatch(setTimeForPast(time))
   }
 
   return (
@@ -41,11 +50,11 @@ const Selectdate: React.FC<SelectdateProps> = ({ className }) => {
         type={isTypeText ? 'text' : 'date'}
         required
         readOnly={isTypeText}
-        // ref={selectdateRef}
         onFocus={setIsTypeTextFalse}
         onBlur={setIsTypeTextTrue}
-        placeholder="Select date"
+        placeholder={isTypeText ? 'Select date' : ''}
         className="selectdate__input"
+        onChange={(e) => setTime(e.target.value)}
       />
     </div>
   )
