@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Forecast from '../forecast'
 import './result7days.scss'
 import cn from 'classnames'
@@ -12,17 +12,39 @@ interface Result7daysProps {
 const Result7days: React.FC<Result7daysProps> = ({ className }) => {
   const data7days = useSelector<AppStore, any>((store) => store.weather7days.data7days)
 
-  const data3days = data7days.daily.slice(1, 4)
+  const [start, setStart] = useState(1)
+  const [finish, setFinish] = useState(4)
+
+  let data3days = data7days.daily.slice(start, finish)
+
+  function prev() {
+    if (start > 1) {
+      setStart((start) => start - 1)
+      setFinish((finish) => finish - 1)
+    }
+  }
+
+  function next() {
+    if (start < 5) {
+      setStart((start) => start + 1)
+      setFinish((finish) => finish + 1)
+    }
+  }
+
+  useEffect(() => {
+    data3days = data7days.daily.slice(start, finish)
+  }, [start])
 
   return (
     <div className={cn(className, 'result7days')}>
       <div className="result7days__line">
-        {data3days.map((day: any, index: number) => (
-          <Forecast key={index} day={day} className="result7days__forecast" type="7days" />
-        ))}
+        {data3days &&
+          data3days.map((day: any, index: number) => (
+            <Forecast key={index} day={day} className="result7days__forecast" type="7days" />
+          ))}
       </div>
       <div className="result7days__btns">
-        <button>
+        <button onClick={prev}>
           <svg
             width="24"
             height="24"
@@ -37,7 +59,7 @@ const Result7days: React.FC<Result7daysProps> = ({ className }) => {
             />
           </svg>
         </button>
-        <button>
+        <button onClick={next}>
           <svg
             width="24"
             height="24"
