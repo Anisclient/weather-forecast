@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import './selectcity.scss'
 import cn from 'classnames'
 import { useDispatch } from 'react-redux'
@@ -7,29 +7,25 @@ import { City } from '../../store/slices/weather7days'
 interface SelectCityProps {
   className?: string
   currentCity: string
-  fetch: () => void
   cities: City[]
   setCurrentCity: (name: string) => void
+  type: '7days' | 'dateInThePast'
 }
 
 const Selectcity: React.FC<SelectCityProps> = ({
   className,
   currentCity,
-  fetch,
   cities,
   setCurrentCity,
+  type,
 }) => {
   const [active, setActive] = useState(false)
-
-  const selectcityRef = useRef() as React.MutableRefObject<HTMLInputElement>
 
   const dispatch = useDispatch()
 
   function setCityNameToInput(name: string) {
     dispatch(setCurrentCity(name))
     setActive(false)
-    selectcityRef.current.focus()
-    fetch()
   }
 
   function setCityNameToInputWithKeyboard(e: React.KeyboardEvent, name: string) {
@@ -38,7 +34,6 @@ const Selectcity: React.FC<SelectCityProps> = ({
     if (keyCode === 'Enter') {
       dispatch(setCurrentCity(name))
       setActive(false)
-      selectcityRef.current.focus()
     }
   }
 
@@ -60,15 +55,12 @@ const Selectcity: React.FC<SelectCityProps> = ({
 
   return (
     <div className={cn(className, 'selectcity')}>
-      <label
-        htmlFor="selectcity"
-        className={cn('selectcity__label', `${active && 'active'}`)}></label>
+      <label htmlFor={type} className={cn('selectcity__label', `${active && 'active'}`)}></label>
       <input
-        id="selectcity"
+        id={type}
         value={currentCity}
         type="text"
         readOnly
-        ref={selectcityRef}
         placeholder="Select city"
         className={cn('selectcity__input', `${active && 'active'}`)}
         onClick={handleActive}

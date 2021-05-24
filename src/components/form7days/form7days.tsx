@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './form7days.scss'
 import cn from 'classnames'
 import { submit7days } from '../../store/actions/weather7days'
@@ -15,7 +15,6 @@ const Form7days: React.FC<Form7daysProps> = ({ className }) => {
   const dispatch = useDispatch()
 
   const currentCity = useSelector<AppStore, string>((store) => store.weather7days.currentCity7days)
-
   const cities = useSelector<AppStore, City[]>((store) => store.weather7days.cities)
 
   const city: City = cities.find((city) => city.name === currentCity) || {
@@ -25,23 +24,21 @@ const Form7days: React.FC<Form7daysProps> = ({ className }) => {
     lon: 0,
   }
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-
-    dispatch(submit7days(city))
-  }
-
   function fetch() {
-    dispatch(submit7days(city))
+    city.name !== '' && dispatch(submit7days(city))
   }
+
+  useEffect(() => {
+    fetch()
+  }, [city])
 
   return (
-    <form className={cn(className, 'form7days')} onSubmit={handleSubmit}>
+    <form className={cn(className, 'form7days')}>
       <Selectcity
         currentCity={currentCity}
-        fetch={fetch}
         cities={cities}
         setCurrentCity={setCurrentCity}
+        type="7days"
       />
     </form>
   )

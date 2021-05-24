@@ -18,7 +18,7 @@ const Result7days: React.FC<Result7daysProps> = ({ className }) => {
     <div className={cn(className, 'result7days')}>
       <div className="result7days__line">
         {data3days.map((day: any, index: number) => (
-          <Forecast key={index} day={day} className="result7days__forecast" />
+          <Forecast key={index} day={day} className="result7days__forecast" type="7days" />
         ))}
       </div>
       <div className="result7days__btns">

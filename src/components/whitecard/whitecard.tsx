@@ -13,7 +13,10 @@ interface WhitecardProps {
 }
 
 const Whitecard: React.FC<WhitecardProps> = ({ type }) => {
-  const isResult = useSelector<AppStore, boolean>((store) => store.weather7days.isResult)
+  const isResult7days = useSelector<AppStore, boolean>((store) => store.weather7days.isResult)
+  const isResultForPast = useSelector<AppStore, boolean>((store) => store.weatherPorPast.isResult)
+
+  const dataForPast = useSelector<AppStore, any>((store) => store.weatherPorPast.dataForPast)
 
   return (
     <section className="main__whitecard whitecard">
@@ -23,11 +26,17 @@ const Whitecard: React.FC<WhitecardProps> = ({ type }) => {
       {type === '7days' ? (
         <Form7days className="whitecard__form" />
       ) : (
-        <Formforpast className="whitecard__form" isResult={isResult} />
+        <Formforpast className="whitecard__form" />
       )}
-      {isResult ? (
-        type === '7days' ? (
+      {type === '7days' ? (
+        isResult7days ? (
           <Result7days className="whitecard__result7days" />
+        ) : (
+          <Placeholder className="whitecard__placeholder" />
+        )
+      ) : isResultForPast ? (
+        !dataForPast.current ? (
+          <Placeholder className="whitecard__placeholder" />
         ) : (
           <Resultforpast className="whitecard__resultforpast" />
         )

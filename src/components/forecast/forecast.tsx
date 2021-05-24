@@ -5,9 +5,10 @@ import cn from 'classnames'
 interface ForecastProps {
   className?: string
   day?: any
+  type: '7days' | 'dateInThePast'
 }
 
-const Forecast: React.FC<ForecastProps> = ({ className, day }) => {
+const Forecast: React.FC<ForecastProps> = ({ className, day, type }) => {
   const date = new Date(day && day.dt * 1000)
 
   const getDay = date.getDate()
@@ -32,9 +33,10 @@ const Forecast: React.FC<ForecastProps> = ({ className, day }) => {
 
   const forecastDate = `${getDay} ${getMonth} ${getYear}`
 
-  const code = day && day.weather[0].icon
-  const description = day && day.weather[0].description
-  const temp = Math.round(day && day.temp.day)
+  const code = day && day.weather[0]?.icon
+  const description = day && day.weather[0]?.description
+  const dataForTemp = type === '7days' ? day.temp?.day : day?.temp
+  const temp = Math.round(dataForTemp && dataForTemp)
 
   return (
     <div className={cn(className, 'forecast')}>

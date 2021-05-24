@@ -4,12 +4,14 @@ export interface WeatherForPastState {
   dataForPast: unknown
   currentCityForPast: string
   time: string
+  isResult: boolean
 }
 
 const initialState: WeatherForPastState = {
   dataForPast: '',
   currentCityForPast: '',
   time: '',
+  isResult: false,
 }
 
 const slice = createSlice({
@@ -18,6 +20,7 @@ const slice = createSlice({
   reducers: {
     fetchDataForPast(state, action) {
       state.dataForPast = action.payload
+      state.isResult = true
     },
     setCurrentCityForPast(state, action) {
       state.currentCityForPast = action.payload

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './formforpast.scss'
 import cn from 'classnames'
 import { submitForPast } from '../../store/actions/weatherforpast'
@@ -11,10 +11,9 @@ import { setCurrentCityForPast } from '../../store/slices/weatherforpast'
 
 interface FormforpastProps {
   className?: string
-  isResult: boolean
 }
 
-const Formforpast: React.FC<FormforpastProps> = ({ className, isResult }) => {
+const Formforpast: React.FC<FormforpastProps> = ({ className }) => {
   const dispatch = useDispatch()
 
   const currentCity = useSelector<AppStore, string>(
@@ -29,6 +28,7 @@ const Formforpast: React.FC<FormforpastProps> = ({ className, isResult }) => {
   }
 
   const time = useSelector<AppStore, string>((store) => store.weatherPorPast.time)
+
   function getUnixTime(time: string) {
     const date = time.split('-')
     return (
@@ -39,26 +39,24 @@ const Formforpast: React.FC<FormforpastProps> = ({ className, isResult }) => {
 
   const unixTime = getUnixTime(time)
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-
-    city && time && dispatch(submitForPast(city, unixTime))
-  }
-
   function fetch() {
-    city && time && dispatch(submitForPast(city, unixTime))
+    city.name !== '' && time && dispatch(submitForPast(city, unixTime))
   }
+
+  useEffect(() => {
+    fetch()
+  }, [city, time])
 
   return (
-    <form className={cn(className, 'formforpast')} onSubmit={handleSubmit}>
+    <form className={cn(className, 'formforpast')}>
       <Selectcity
         className="formforpast__selectcity"
         currentCity={currentCity}
-        fetch={fetch}
         cities={cities}
         setCurrentCity={setCurrentCityForPast}
+        type="dateInThePast"
       />
-      <Selectdate className={cn('formforpast__selectdate', isResult && 'result')} />
+      <Selectdate className="formforpast__selectdate" />
     </form>
   )
 }
